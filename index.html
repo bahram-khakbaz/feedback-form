@@ -12,7 +12,6 @@
       color: #fff;
       margin: 0;
       padding: 0;
-      direction: rtl;
     }
     .container {
       max-width: 900px;
@@ -31,7 +30,7 @@
       display: block;
       margin-top: 15px;
       font-weight: bold;
-      text-align: right;
+      text-align: right; /* راست‌چین کردن برچسب‌ها */
     }
     input, select {
       width: 100%;
@@ -40,7 +39,6 @@
       border-radius: 6px;
       border: none;
       font-size: 16px;
-      text-align: right;
     }
     .feedback {
       border: 1px solid #2A6F97;
@@ -53,10 +51,6 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 10px;
-    }
-    .feedback-header span {
-      font-weight: bold;
     }
     .feedback-header button {
       background-color: #FF8C42;
@@ -173,7 +167,7 @@
       .catch(err => alert('خطا در ارسال اطلاعات'));
     });
 
-    // اضافه کردن یک بازخورد دهنده پیش‌فرض
+    // اضافه کردن یک بازخورد دهنده به صورت پیش‌فرض
     createFeedback();
   </script>
 </body>
