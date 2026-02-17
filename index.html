@@ -1,137 +1,134 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>فرم معرفی بازخورد دهندگان</title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: Tahoma, Arial, sans-serif;
-      background-color: #003366;
-      padding: 40px 20px;
+      font-family: 'Vazirmatn', sans-serif;
+      background-color: #0D3B66; /* آبی نفتی */
+      color: #fff;
+      margin: 0;
+      padding: 0;
     }
-    .form-container {
-      background-color: #ffffff;
-      padding: 30px 25px;
-      border-radius: 15px;
-      max-width: 850px;
-      margin: auto;
-      box-shadow: 0px 6px 15px rgba(0,0,0,0.2);
-      direction: rtl;
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      background-color: #1B4965;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
     }
-    h2 {
+    h1 {
       text-align: center;
-      margin-bottom: 25px;
-      color: #ffffff;
-      background-color: #00509e;
-      padding: 10px;
-      border-radius: 10px;
-      direction: ltr;
-    }
-    h3 {
-      text-align: right;
-      margin-top: 20px;
-      margin-bottom: 15px;
-      font-size: 18px;
-      color: #003366;
-      font-weight: bold;
+      margin-bottom: 30px;
+      font-size: 28px;
     }
     label {
       display: block;
-      margin-top: 8px;
+      margin-top: 15px;
       font-weight: bold;
-      text-align: right;
-      color: #003366;
     }
     input, select {
       width: 100%;
-      padding: 8px 10px;
+      padding: 10px;
       margin-top: 5px;
-      margin-bottom: 12px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      box-sizing: border-box;
-      text-align: right;
-      font-size: 14px;
-    }
-    .feedback-holder {
-      border: 1px solid #ddd;
-      padding: 12px;
-      margin-bottom: 12px;
-      border-radius: 8px;
-      position: relative;
-      background-color: #f1f7ff;
-    }
-    .remove-btn {
-      position: absolute;
-      top: 5px;
-      left: 5px;
-      background-color: #ff4d4d;
-      color: white;
+      border-radius: 6px;
       border: none;
+      font-size: 16px;
+    }
+    .feedback {
+      border: 1px solid #2A6F97;
+      padding: 15px;
+      margin-top: 20px;
+      border-radius: 8px;
+      background-color: #145374;
+    }
+    .feedback-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .feedback-header button {
+      background-color: #FF8C42;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
       border-radius: 5px;
       cursor: pointer;
-      padding: 4px 8px;
-      font-size: 12px;
     }
-    .add-btn, input[type="submit"] {
-      margin-top: 12px;
-      padding: 12px 20px;
+    .feedback-header button:hover {
+      background-color: #FFA160;
+    }
+    #addFeedback {
+      margin-top: 20px;
+      background-color: #FF8C42;
+      color: #fff;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    #addFeedback:hover {
+      background-color: #FFA160;
+    }
+    #submitBtn {
+      margin-top: 30px;
+      width: 100%;
+      padding: 12px;
+      font-size: 18px;
+      background-color: #06D6A0;
+      color: #fff;
       border: none;
       border-radius: 8px;
-      background-color: #00509e;
-      color: white;
       cursor: pointer;
-      float: right;
-      font-size: 14px;
-      font-weight: bold;
     }
-    .add-btn:hover, input[type="submit"]:hover {
-      background-color: #003f7f;
+    #submitBtn:hover {
+      background-color: #05c78a;
     }
-    .clearfix { clear: both; }
   </style>
 </head>
 <body>
-  <div class="form-container">
-    <h2>فرم معرفی بازخورد دهندگان</h2>
+  <div class="container">
+    <h1>فرم معرفی بازخورد دهندگان</h1>
 
-    <h3>بازخورد گیرنده</h3>
-    <label>نام و نام خانوادگی</label>
-    <input type="text" name="receiver_name" required>
-    <label>ایمیل</label>
-    <input type="email" name="receiver_email" required>
+    <label>بازخورد گیرنده</label>
+    <input type="text" id="receiver_name" placeholder="نام و نام خانوادگی">
+    <input type="email" id="receiver_email" placeholder="ایمیل بازخورد گیرنده">
 
-    <h3>بازخورد دهندگان</h3>
-    <div id="feedbackContainer"></div>
-    <button type="button" class="add-btn" id="addFeedbackBtn">افزودن بازخورد دهنده</button>
-    <div class="clearfix"></div>
+    <div id="feedbacks-container">
+      <!-- بازخورد دهنده‌ها اینجا اضافه می‌شوند -->
+    </div>
 
-    <input type="submit" value="ارسال" id="submitBtn">
-    <div class="clearfix"></div>
+    <button id="addFeedback">افزودن بازخورد دهنده</button>
+    <button id="submitBtn">ارسال</button>
   </div>
 
   <script>
-    const feedbackContainer = document.getElementById('feedbackContainer');
-    const addBtn = document.getElementById('addFeedbackBtn');
+    const feedbackContainer = document.getElementById('feedbacks-container');
+    const addBtn = document.getElementById('addFeedback');
+    const submitBtn = document.getElementById('submitBtn');
     let feedbackCount = 0;
     const maxFeedback = 40;
-    const webAppUrl = "https://script.google.com/macros/s/AKfycbzJYhlO40TF3_hUmSYaJbFg_zxbwWg9hkV4Jle92vyK6ThP6KZpcmvIgfcmp4zC2OGS/exec";
 
-    function createFeedbackItem() {
-      if(feedbackCount >= maxFeedback) return;
-
+    function createFeedback() {
+      if(feedbackCount >= maxFeedback) return alert('حداکثر 40 بازخورد دهنده مجاز است');
       feedbackCount++;
+
       const div = document.createElement('div');
-      div.className = 'feedback-holder';
+      div.className = 'feedback';
       div.innerHTML = `
-        <button type="button" class="remove-btn">حذف</button>
-        <label>نام و نام خانوادگی بازخورد دهنده</label>
-        <input type="text" name="feedback_name_${feedbackCount}" required>
-        <label>ایمیل بازخورد دهنده</label>
-        <input type="email" name="feedback_email_${feedbackCount}" required>
-        <label>نوع ارتباط با بازخورد گیرنده</label>
-        <select name="feedback_relation_${feedbackCount}" required>
-          <option value="">انتخاب کنید</option>
+        <div class="feedback-header">
+          <span>بازخورد دهنده ${feedbackCount}</span>
+          <button type="button" onclick="this.closest('.feedback').remove(); feedbackCount--;">حذف</button>
+        </div>
+        <input type="text" class="fb_name" placeholder="نام و نام خانوادگی">
+        <input type="email" class="fb_email" placeholder="ایمیل بازخورد دهنده">
+        <select class="fb_relation">
+          <option value="">نوع ارتباط بازخورد دهنده با بازخورد گیرنده</option>
           <option value="مدیر">مدیر</option>
           <option value="تحت سرپرستی">تحت سرپرستی</option>
           <option value="همکار">همکار</option>
@@ -139,45 +136,211 @@
         </select>
       `;
       feedbackContainer.appendChild(div);
-
-      const removeBtn = div.querySelector('.remove-btn');
-      removeBtn.addEventListener('click', () => {
-        div.remove();
-        feedbackCount--;
-      });
     }
 
-    addBtn.addEventListener('click', createFeedbackItem);
+    addBtn.addEventListener('click', createFeedback);
 
-    document.getElementById('submitBtn').addEventListener('click', () => {
+    submitBtn.addEventListener('click', () => {
       const formData = {
-        receiver_name: document.querySelector('input[name="receiver_name"]').value,
-        receiver_email: document.querySelector('input[name="receiver_email"]').value,
+        receiver_name: document.getElementById('receiver_name').value,
+        receiver_email: document.getElementById('receiver_email').value,
         feedbacks: []
       };
-      const holders = document.querySelectorAll('.feedback-holder');
-      holders.forEach(holder => {
+
+      document.querySelectorAll('.feedback').forEach(fb => {
         formData.feedbacks.push({
-          name: holder.querySelector('input[type="text"]').value,
-          email: holder.querySelector('input[type="email"]').value,
-          relation: holder.querySelector('select').value
+          name: fb.querySelector('.fb_name').value,
+          email: fb.querySelector('.fb_email').value,
+          relation: fb.querySelector('.fb_relation').value
         });
       });
 
-      // ارسال داده‌ها به Google Apps Script Web App
-      fetch(webAppUrl, {
+      // ارسال به Google Apps Script Web App
+      fetch("https://script.google.com/macros/s/AKfycbzJYhlO40TF3_hUmSYaJbFg_zxbwWg9hkV4Jle92vyK6ThP6KZpcmvIgfcmp4zC2OGS/exec", {
         method: "POST",
-        mode: "no-cors",
-        headers: {
-          'Content-Type': 'application/json'
-        },
+        headers: {"Content-Type": "application/json"},
         body: JSON.stringify(formData)
+      })
+      .then(res => res.text())
+      .then(res => alert('اطلاعات با موفقیت ارسال شد!'))
+      .catch(err => alert('خطا در ارسال اطلاعات'));
+    });
+
+    // اضافه کردن یک بازخورد دهنده به صورت پیش‌فرض
+    createFeedback();
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>فرم معرفی بازخورد دهندگان</title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Vazirmatn', sans-serif;
+      background-color: #0D3B66; /* آبی نفتی */
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      background-color: #1B4965;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 28px;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 6px;
+      border: none;
+      font-size: 16px;
+    }
+    .feedback {
+      border: 1px solid #2A6F97;
+      padding: 15px;
+      margin-top: 20px;
+      border-radius: 8px;
+      background-color: #145374;
+    }
+    .feedback-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .feedback-header button {
+      background-color: #FF8C42;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .feedback-header button:hover {
+      background-color: #FFA160;
+    }
+    #addFeedback {
+      margin-top: 20px;
+      background-color: #FF8C42;
+      color: #fff;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    #addFeedback:hover {
+      background-color: #FFA160;
+    }
+    #submitBtn {
+      margin-top: 30px;
+      width: 100%;
+      padding: 12px;
+      font-size: 18px;
+      background-color: #06D6A0;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    #submitBtn:hover {
+      background-color: #05c78a;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>فرم معرفی بازخورد دهندگان</h1>
+
+    <label>بازخورد گیرنده</label>
+    <input type="text" id="receiver_name" placeholder="نام و نام خانوادگی">
+    <input type="email" id="receiver_email" placeholder="ایمیل بازخورد گیرنده">
+
+    <div id="feedbacks-container">
+      <!-- بازخورد دهنده‌ها اینجا اضافه می‌شوند -->
+    </div>
+
+    <button id="addFeedback">افزودن بازخورد دهنده</button>
+    <button id="submitBtn">ارسال</button>
+  </div>
+
+  <script>
+    const feedbackContainer = document.getElementById('feedbacks-container');
+    const addBtn = document.getElementById('addFeedback');
+    const submitBtn = document.getElementById('submitBtn');
+    let feedbackCount = 0;
+    const maxFeedback = 40;
+
+    function createFeedback() {
+      if(feedbackCount >= maxFeedback) return alert('حداکثر 40 بازخورد دهنده مجاز است');
+      feedbackCount++;
+
+      const div = document.createElement('div');
+      div.className = 'feedback';
+      div.innerHTML = `
+        <div class="feedback-header">
+          <span>بازخورد دهنده ${feedbackCount}</span>
+          <button type="button" onclick="this.closest('.feedback').remove(); feedbackCount--;">حذف</button>
+        </div>
+        <input type="text" class="fb_name" placeholder="نام و نام خانوادگی">
+        <input type="email" class="fb_email" placeholder="ایمیل بازخورد دهنده">
+        <select class="fb_relation">
+          <option value="">نوع ارتباط بازخورد دهنده با بازخورد گیرنده</option>
+          <option value="مدیر">مدیر</option>
+          <option value="تحت سرپرستی">تحت سرپرستی</option>
+          <option value="همکار">همکار</option>
+          <option value="مشتری">مشتری</option>
+        </select>
+      `;
+      feedbackContainer.appendChild(div);
+    }
+
+    addBtn.addEventListener('click', createFeedback);
+
+    submitBtn.addEventListener('click', () => {
+      const formData = {
+        receiver_name: document.getElementById('receiver_name').value,
+        receiver_email: document.getElementById('receiver_email').value,
+        feedbacks: []
+      };
+
+      document.querySelectorAll('.feedback').forEach(fb => {
+        formData.feedbacks.push({
+          name: fb.querySelector('.fb_name').value,
+          email: fb.querySelector('.fb_email').value,
+          relation: fb.querySelector('.fb_relation').value
+        });
       });
 
-      feedbackContainer.innerHTML = '';
-      feedbackCount = 0;
-      alert('اطلاعات با موفقیت ثبت شد.');
+      // ارسال به Google Apps Script Web App
+      fetch("https://script.google.com/macros/s/AKfycbzJYhlO40TF3_hUmSYaJbFg_zxbwWg9hkV4Jle92vyK6ThP6KZpcmvIgfcmp4zC2OGS/exec", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(formData)
+      })
+      .then(res => res.text())
+      .then(res => alert('اطلاعات با موفقیت ارسال شد!'))
+      .catch(err => alert('خطا در ارسال اطلاعات'));
     });
+
+    // اضافه کردن یک بازخورد دهنده به صورت پیش‌فرض
+    createFeedback();
   </script>
 </body>
 </html>
