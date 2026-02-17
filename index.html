@@ -12,6 +12,7 @@
       color: #fff;
       margin: 0;
       padding: 0;
+      direction: rtl;
     }
     .container {
       max-width: 900px;
@@ -30,6 +31,7 @@
       display: block;
       margin-top: 15px;
       font-weight: bold;
+      text-align: right;
     }
     input, select {
       width: 100%;
@@ -38,6 +40,7 @@
       border-radius: 6px;
       border: none;
       font-size: 16px;
+      text-align: right;
     }
     .feedback {
       border: 1px solid #2A6F97;
@@ -50,6 +53,10 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      margin-bottom: 10px;
+    }
+    .feedback-header span {
+      font-weight: bold;
     }
     .feedback-header button {
       background-color: #FF8C42;
@@ -166,180 +173,7 @@
       .catch(err => alert('خطا در ارسال اطلاعات'));
     });
 
-    // اضافه کردن یک بازخورد دهنده به صورت پیش‌فرض
-    createFeedback();
-  </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>فرم معرفی بازخورد دهندگان</title>
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Vazirmatn', sans-serif;
-      background-color: #0D3B66; /* آبی نفتی */
-      color: #fff;
-      margin: 0;
-      padding: 0;
-    }
-    .container {
-      max-width: 900px;
-      margin: 40px auto;
-      background-color: #1B4965;
-      border-radius: 12px;
-      padding: 30px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-    }
-    h1 {
-      text-align: center;
-      margin-bottom: 30px;
-      font-size: 28px;
-    }
-    label {
-      display: block;
-      margin-top: 15px;
-      font-weight: bold;
-    }
-    input, select {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border-radius: 6px;
-      border: none;
-      font-size: 16px;
-    }
-    .feedback {
-      border: 1px solid #2A6F97;
-      padding: 15px;
-      margin-top: 20px;
-      border-radius: 8px;
-      background-color: #145374;
-    }
-    .feedback-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .feedback-header button {
-      background-color: #FF8C42;
-      color: #fff;
-      border: none;
-      padding: 5px 10px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .feedback-header button:hover {
-      background-color: #FFA160;
-    }
-    #addFeedback {
-      margin-top: 20px;
-      background-color: #FF8C42;
-      color: #fff;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-    #addFeedback:hover {
-      background-color: #FFA160;
-    }
-    #submitBtn {
-      margin-top: 30px;
-      width: 100%;
-      padding: 12px;
-      font-size: 18px;
-      background-color: #06D6A0;
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-    #submitBtn:hover {
-      background-color: #05c78a;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>فرم معرفی بازخورد دهندگان</h1>
-
-    <label>بازخورد گیرنده</label>
-    <input type="text" id="receiver_name" placeholder="نام و نام خانوادگی">
-    <input type="email" id="receiver_email" placeholder="ایمیل بازخورد گیرنده">
-
-    <div id="feedbacks-container">
-      <!-- بازخورد دهنده‌ها اینجا اضافه می‌شوند -->
-    </div>
-
-    <button id="addFeedback">افزودن بازخورد دهنده</button>
-    <button id="submitBtn">ارسال</button>
-  </div>
-
-  <script>
-    const feedbackContainer = document.getElementById('feedbacks-container');
-    const addBtn = document.getElementById('addFeedback');
-    const submitBtn = document.getElementById('submitBtn');
-    let feedbackCount = 0;
-    const maxFeedback = 40;
-
-    function createFeedback() {
-      if(feedbackCount >= maxFeedback) return alert('حداکثر 40 بازخورد دهنده مجاز است');
-      feedbackCount++;
-
-      const div = document.createElement('div');
-      div.className = 'feedback';
-      div.innerHTML = `
-        <div class="feedback-header">
-          <span>بازخورد دهنده ${feedbackCount}</span>
-          <button type="button" onclick="this.closest('.feedback').remove(); feedbackCount--;">حذف</button>
-        </div>
-        <input type="text" class="fb_name" placeholder="نام و نام خانوادگی">
-        <input type="email" class="fb_email" placeholder="ایمیل بازخورد دهنده">
-        <select class="fb_relation">
-          <option value="">نوع ارتباط بازخورد دهنده با بازخورد گیرنده</option>
-          <option value="مدیر">مدیر</option>
-          <option value="تحت سرپرستی">تحت سرپرستی</option>
-          <option value="همکار">همکار</option>
-          <option value="مشتری">مشتری</option>
-        </select>
-      `;
-      feedbackContainer.appendChild(div);
-    }
-
-    addBtn.addEventListener('click', createFeedback);
-
-    submitBtn.addEventListener('click', () => {
-      const formData = {
-        receiver_name: document.getElementById('receiver_name').value,
-        receiver_email: document.getElementById('receiver_email').value,
-        feedbacks: []
-      };
-
-      document.querySelectorAll('.feedback').forEach(fb => {
-        formData.feedbacks.push({
-          name: fb.querySelector('.fb_name').value,
-          email: fb.querySelector('.fb_email').value,
-          relation: fb.querySelector('.fb_relation').value
-        });
-      });
-
-      // ارسال به Google Apps Script Web App
-      fetch("https://script.google.com/macros/s/AKfycbzJYhlO40TF3_hUmSYaJbFg_zxbwWg9hkV4Jle92vyK6ThP6KZpcmvIgfcmp4zC2OGS/exec", {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(formData)
-      })
-      .then(res => res.text())
-      .then(res => alert('اطلاعات با موفقیت ارسال شد!'))
-      .catch(err => alert('خطا در ارسال اطلاعات'));
-    });
-
-    // اضافه کردن یک بازخورد دهنده به صورت پیش‌فرض
+    // اضافه کردن یک بازخورد دهنده پیش‌فرض
     createFeedback();
   </script>
 </body>
