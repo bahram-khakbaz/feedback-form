@@ -14,36 +14,38 @@
       padding: 0;
     }
     .container {
-      max-width: 900px;
+      max-width: 700px; /* کوچکتر شد */
       margin: 40px auto;
       background-color: #1B4965;
       border-radius: 12px;
-      padding: 30px;
+      padding: 25px; /* کمی کمتر شد */
       box-shadow: 0 8px 20px rgba(0,0,0,0.3);
     }
     h1 {
       text-align: center;
-      margin-bottom: 30px;
-      font-size: 28px;
+      margin-bottom: 25px;
+      font-size: 26px; /* کمی کوچکتر */
     }
     label {
       display: block;
-      margin-top: 15px;
+      margin-top: 12px;
       font-weight: bold;
-      text-align: right; /* راست‌چین کردن برچسب‌ها */
     }
     input, select {
-      width: 100%;
-      padding: 10px;
+      width: 90%; /* عرض کمتر شد */
+      padding: 8px;
       margin-top: 5px;
       border-radius: 6px;
       border: none;
-      font-size: 16px;
+      font-size: 15px;
+      display: block;
+      margin-right: auto;
+      margin-left: auto;
     }
     .feedback {
       border: 1px solid #2A6F97;
-      padding: 15px;
-      margin-top: 20px;
+      padding: 12px;
+      margin-top: 18px;
       border-radius: 8px;
       background-color: #145374;
     }
@@ -56,36 +58,43 @@
       background-color: #FF8C42;
       color: #fff;
       border: none;
-      padding: 5px 10px;
+      padding: 4px 8px;
       border-radius: 5px;
       cursor: pointer;
+      font-size: 14px;
     }
     .feedback-header button:hover {
       background-color: #FFA160;
     }
     #addFeedback {
-      margin-top: 20px;
+      margin-top: 18px;
       background-color: #FF8C42;
       color: #fff;
       border: none;
-      padding: 10px 15px;
+      padding: 8px 12px;
       border-radius: 6px;
       cursor: pointer;
-      font-size: 16px;
+      font-size: 15px;
+      display: block;
+      margin-right: auto;
+      margin-left: auto;
     }
     #addFeedback:hover {
       background-color: #FFA160;
     }
     #submitBtn {
-      margin-top: 30px;
-      width: 100%;
-      padding: 12px;
-      font-size: 18px;
+      margin-top: 25px;
+      width: 50%; /* نصف عرض شد */
+      padding: 10px;
+      font-size: 16px;
       background-color: #06D6A0;
       color: #fff;
       border: none;
       border-radius: 8px;
       cursor: pointer;
+      display: block;
+      margin-right: auto;
+      margin-left: auto;
     }
     #submitBtn:hover {
       background-color: #05c78a;
@@ -156,7 +165,6 @@
         });
       });
 
-      // ارسال به Google Apps Script Web App
       fetch("https://script.google.com/macros/s/AKfycbzJYhlO40TF3_hUmSYaJbFg_zxbwWg9hkV4Jle92vyK6ThP6KZpcmvIgfcmp4zC2OGS/exec", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
@@ -167,7 +175,7 @@
       .catch(err => alert('خطا در ارسال اطلاعات'));
     });
 
-    // اضافه کردن یک بازخورد دهنده به صورت پیش‌فرض
+    // اضافه کردن یک بازخورد دهنده پیش‌فرض
     createFeedback();
   </script>
 </body>
